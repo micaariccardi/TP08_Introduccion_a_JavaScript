@@ -1,18 +1,20 @@
 /*Funciones para que funcionen los ejercicios */
 
-function IngresarFechaNacimiento(){
+/*1*/
+function IngresarFechaNacimiento(mensaje){
     let valido = false;
     let nacimiento;
     do{
-        nacimiento = prompt("Cuándo naciste? YYYY-MM-DD");
+        nacimiento = prompt(mensaje);
         valido = ValidarFechaNacimiento(nacimiento);
     }
     while(!valido);
+    return nacimiento;
 }
 
 function ValidarFechaNacimiento(fecha){
     const diasEnMes = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    const fechaArray = fecha.split("-");
+    const fechaArray = fecha.split('-');
     const date = new Date();
     const hoy = [date.getFullYear, date.getMonth, date.getDate];
     if (fechaArray[0] <= 0 || (fechaArray[1] < 1 || fechaArray[1] > 12) || (fechaArray[2] < 1 || fechaArray[2] > diasEnMes[fechaArray[1]-1] ))
@@ -51,3 +53,5 @@ function CalcularEdad(fecha)
         edad--;
     return edad;
 }
+
+

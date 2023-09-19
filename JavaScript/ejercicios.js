@@ -73,14 +73,23 @@ function triangulo()
     let asteriscos = "";
     for(let i = 0; i < 5; i++)
     {
-        asteriscos += "*"
+        asteriscos += "*";
         console.log(asteriscos);
     }
 }
 
-/*function piramide()
+function piramide()
 {
-*/
+    let guiones = '----';
+    let asteriscos = '*';
+    let max = 5;
+    for(let i = 0; i < max; i++)
+    {
+        console.log(guiones + asteriscos + guiones);
+        guiones = guiones.substring(0,guiones.length-1);
+        asteriscos += '**';
+    }
+}
 
 function nombresConA()
 {
@@ -115,16 +124,29 @@ function cortarTexto() //depende de si queres que se incluya o no el número de 
     dialogo.innerHTML = `${input.substring(0, num)}`;    
 }
 
-stringSeparado();
 function stringSeparado()
 {
     let input = prompt("Ingrese una lista separada por comas.");
     let array = input.split(',');
     const dialogo = document.getElementById('resultado');
-    dialogo.innerHTML += `<p>Elementos de la lista:</p> <ul>`;
+    let str = '';
     for (let i = 0; i < array.length; i++)
     {        
-        dialogo.innerHTML += `<li>${array[i]}</li>`;
+        str += `${array[i]}-`;
     }
-    dialogo.innerHTML += `</ul>`;
+    str = str.substring(0, str.length - 1);
+    dialogo.innerHTML = str;
+}
+
+function Recaudacion()
+{
+    let pedido = prompt('Ingrese una lista de objetos pedidos junto con sus respectivos totales, separados por coma. Por ejemplo, Pizza:15.50,Hamburguesa:8.75,Bebidas:4.25');
+    let productoYValor = pedido.split(/[:,]/);
+    const dialogo = document.getElementById('resultado');
+    let suma = 0;
+    for(let i = 1; i < productoYValor.length; i+=2)
+    {
+        suma += parseFloat(productoYValor[i]);
+    }
+    dialogo.innerHTML = suma;
 }
